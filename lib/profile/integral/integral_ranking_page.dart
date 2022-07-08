@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NavPage extends StatelessWidget {
-  const NavPage({Key? key}) : super(key: key);
+class IntegralRankingPage extends StatelessWidget {
+  const IntegralRankingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("NavPage"),
+        title: Text("IntegralRankingPage"),
       ),
       body: Container(),
     );

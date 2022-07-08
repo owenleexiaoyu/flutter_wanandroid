@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
+import 'package:flutter_wanandroid/profile/integral/integral_ranking_page.dart';
+import 'package:flutter_wanandroid/profile/integral/my_integral_page.dart';
 import 'package:flutter_wanandroid/profile/profile_item.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -56,10 +58,18 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
-                    title: "我的积分", onTap: (){},),
+                    title: "我的积分", onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return MyIntegralPage();
+                      }));
+                    },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
-                    title: "积分排行", onTap: (){},),
+                    title: "积分排行", onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return IntegralRankingPage();
+                      }));
+                    },),
                 ],
               )
             ),

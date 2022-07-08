@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
-import 'package:flutter_wanandroid/discovery_page.dart';
-import 'package:flutter_wanandroid/home_page.dart';
-import 'package:flutter_wanandroid/knowledge_system_page.dart';
-import 'package:flutter_wanandroid/nav_page.dart';
+import 'package:flutter_wanandroid/discovery/discovery_page.dart';
+import 'package:flutter_wanandroid/home/home_page.dart';
+import 'package:flutter_wanandroid/system/knowledge_system_page.dart';
+import 'package:flutter_wanandroid/nav/nav_page.dart';
 import 'package:flutter_wanandroid/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {
