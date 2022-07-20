@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/account/login_page.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
+import 'package:flutter_wanandroid/discovery/banner/discovery_banner.dart';
 import 'package:flutter_wanandroid/search/search_page.dart';
 
 class DiscoveryPage extends StatelessWidget {
@@ -35,7 +36,9 @@ class DiscoveryPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: Container(
+        child: BannerWidget(),
+      ),
     );
   }
 }

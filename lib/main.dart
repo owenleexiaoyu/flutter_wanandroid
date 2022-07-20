@@ -31,6 +31,11 @@ class WanAndroidApp extends StatelessWidget {
             fontSize: 15,
             fontWeight: FontWeight.w400
           ),
+          bodyText2: TextStyle(
+            color: AppColors.lightTextSecondary,
+            fontSize: 15
+          ),
+
         )
       ),
       home: MainPage(),
