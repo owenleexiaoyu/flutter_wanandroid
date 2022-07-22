@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wanandroid/api/wan_api.dart';
+import 'package:flutter_wanandroid/brawer/browser_page.dart';
+import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/http/dio_client.dart';
 import 'package:flutter_wanandroid/api/wan_android_api_constants.dart';
 import 'package:flutter_wanandroid/bean/wan_android_response.dart';
@@ -36,20 +38,32 @@ class _BannerWidgetState extends State<BannerWidget> {
             return PageView.builder(
               itemCount: bannerDataList.length,
               itemBuilder: (context, index) {
-              return Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Image.network(
-                    bannerDataList[index].imagePath ?? "",
-                  ),
-                  Container(
-                    height: 30,
-                      width: double.infinity,
-                      color: Colors.grey.withOpacity(0.5),
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(bannerDataList[index].title ?? ""))
-                ],
+                BannerBean banner = bannerDataList[index];
+              return InkWell(
+                onTap: () {
+                  if (banner.title?.isEmpty == true || banner.url?.isEmpty == true) {
+                    return;
+                  }
+                  var browserParam = BrowserParam(title: banner.title!, url: banner.url!);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return BrowserPage(param: browserParam);
+                  }));
+                },
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Image.network(
+                      bannerDataList[index].imagePath ?? "",
+                    ),
+                    Container(
+                      height: 30,
+                        width: double.infinity,
+                        color: Colors.grey.withOpacity(0.5),
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(bannerDataList[index].title ?? ""))
+                  ],
+                ),
               );
             });
           }

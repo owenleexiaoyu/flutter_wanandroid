@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/api/wan_api.dart';
 import 'package:flutter_wanandroid/bean/article.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/home/article_item_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
       });
     }).onError((error, stackTrace) {
       debugPrint(error.toString());
+      Fluttertoast.showToast(msg: "出错了～");
       // showToast
     }).whenComplete(() {
       setState(() {
