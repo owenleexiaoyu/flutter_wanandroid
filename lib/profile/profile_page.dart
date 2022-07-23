@@ -1,7 +1,13 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_wanandroid/brawer/browser_page.dart';
+import 'package:flutter_wanandroid/brawer/browser_param.dart';
+import 'package:flutter_wanandroid/common/widget/svg_icon.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
+import 'package:flutter_wanandroid/config/SvgIcons.dart';
 import 'package:flutter_wanandroid/profile/integral/integral_ranking_page.dart';
 import 'package:flutter_wanandroid/profile/integral/my_integral_page.dart';
+import 'package:flutter_wanandroid/profile/opensource/third_party_libs_page.dart';
 import 'package:flutter_wanandroid/profile/profile_item.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -96,11 +102,16 @@ class ProfilePage extends StatelessWidget {
               elevation: 1,
               child: Column(
                 children: [
-                  ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
-                    title: "开源许可", onTap: (){},),
+                  ProfileItem(icon: SvgIcon(svgIconData: SvgIcons.github,),
+                    title: "开源许可", onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ThirdPartyLibsPage()));
+                    },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.info_outline, size: 24,),
-                    title: "关于作者", onTap: (){},),
+                    title: "关于作者", onTap: (){
+                      final browserParam = BrowserParam(title: "海树", url: "https://lixiaoyu.life");
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => BrowserPage(param: browserParam)));
+                    },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.settings, size: 24,),
                     title: "系统设置", onTap: (){},),

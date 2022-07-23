@@ -3,7 +3,7 @@ import 'package:flutter_wanandroid/config/AppColors.dart';
 
 class ProfileItem extends StatelessWidget {
 
-  final Icon icon;
+  final Widget icon;
   final String title;
   final VoidCallback onTap;
 
