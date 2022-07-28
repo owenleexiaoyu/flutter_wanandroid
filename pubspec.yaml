@@ -30,6 +30,8 @@ dependencies:
   webview_flutter: ^2.0.13
   # display svg images
   flutter_svg: ^0.22.0
+  share_plus: ^4.0.10
+  url_launcher: ^6.0.10
 
 dev_dependencies:
   flutter_test:

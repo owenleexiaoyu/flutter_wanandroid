@@ -7,6 +7,8 @@ class ThirdPartyLibs {
       ThirdPartyLib("fluttertoast", "https://github.com/ponnamkarthik/FlutterToast"),
       ThirdPartyLib("webview_flutter", "https://github.com/fluttercommunity/flutter_webview_plugin"),
       ThirdPartyLib("flutter_svg", "https://github.com/dnfield/flutter_svg"),
+      ThirdPartyLib("share_plus", "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus"),
+      ThirdPartyLib("url_launcher", "https://github.com/flutter/plugins/tree/main/packages/url_launcher/url_launcher"),
     ];
   }
 }

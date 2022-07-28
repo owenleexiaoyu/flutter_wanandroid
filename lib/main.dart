@@ -35,8 +35,8 @@ class WanAndroidApp extends StatelessWidget {
             color: AppColors.lightTextSecondary,
             fontSize: 15
           ),
-
-        )
+        ),
+        iconTheme: IconThemeData(color: AppColors.lightTextPrimary)
       ),
       home: MainPage(),
     );

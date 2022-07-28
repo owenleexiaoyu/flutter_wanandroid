@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_wanandroid/common/widget/keep_alive_wrapper.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/discovery/discovery_page.dart';
 import 'package:flutter_wanandroid/home/home_page.dart';
@@ -38,11 +39,11 @@ class _MainPageState extends State<MainPage> {
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         children: [
-          HomePage(),
-          KnowledgeSystemPage(),
-          DiscoveryPage(),
-          NavPage(),
-          ProfilePage()
+          KeepAliveWrapper(child: HomePage()),
+          KeepAliveWrapper(child: KnowledgeSystemPage()),
+          KeepAliveWrapper(child: DiscoveryPage()),
+          KeepAliveWrapper(child: NavPage()),
+          KeepAliveWrapper(child: ProfilePage())
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -6,6 +6,8 @@ class SvgIcons {
 
   static SvgIconData github = SvgIconData("assets/icons/github.svg");
 
+  static SvgIconData chrome = SvgIconData("assets/icons/chrome.svg");
+
 }
 
 class SvgIconData {
