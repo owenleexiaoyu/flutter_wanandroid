@@ -11,8 +11,6 @@ class DiscoveryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: AppColors.lightBGPrimary,
         title: Text("发现", style: Theme.of(context).textTheme.headline1,),
         leading: InkWell(
             child: Icon(Icons.add, color: AppColors.lightTextPrimary,),

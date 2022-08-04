@@ -42,8 +42,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: AppColors.lightBGPrimary,
         title: Text("首页", style: Theme.of(context).textTheme.headline1,),
       ),
       body: isLoading ? Center(child: CircularProgressIndicator()) :

@@ -13,10 +13,6 @@ class ThirdPartyLibsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("开源库"),
-        elevation: 1,
-        backgroundColor: AppColors.lightBGPrimary,
-        iconTheme: IconTheme.of(context),
-        textTheme: Theme.of(context).textTheme,
       ),
       body: Container(
         color: AppColors.lightBGPrimary,

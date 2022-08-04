@@ -16,6 +16,12 @@ class WanAndroidApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.lightBGPrimary,
+          elevation: 1,
+          iconTheme: Theme.of(context).iconTheme,
+          textTheme: Theme.of(context).textTheme
+        ),
         textTheme: TextTheme(
           headline1: TextStyle(
             color: AppColors.lightTextPrimary,

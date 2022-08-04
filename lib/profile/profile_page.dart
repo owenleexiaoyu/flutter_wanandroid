@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_wanandroid/account/login_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/common/widget/svg_icon.dart';
@@ -17,12 +18,10 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.lightBGPrimary,
         title: Text(
           "我的",
           style: Theme.of(context).textTheme.headline1,
         ),
-        elevation: 1,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -31,28 +30,33 @@ class ProfilePage extends StatelessWidget {
 
             Material(
               elevation: 1,
-              child: Container(
-                color: AppColors.lightBGPrimary,
-                height: 100,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                          color: AppColors.lightBGSecondary,
-                          shape: BoxShape.circle
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+                child: Container(
+                  color: AppColors.lightBGPrimary,
+                  height: 100,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: AppColors.lightBGSecondary,
+                            shape: BoxShape.circle
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 20,),
-                    Text(
-                      "登录/注册",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    Spacer(),
-                    Icon(Icons.chevron_right)
-                  ],
+                      SizedBox(width: 20,),
+                      Text(
+                        "登录/注册",
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      Spacer(),
+                      Icon(Icons.chevron_right)
+                    ],
+                  ),
                 ),
               ),
             ),
