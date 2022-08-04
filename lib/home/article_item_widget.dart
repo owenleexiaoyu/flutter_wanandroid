@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/bean/article.dart';
 import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
+import 'package:get/get.dart';
 
 class ArticleItemWidget extends StatelessWidget {
 
@@ -28,10 +29,12 @@ class ArticleItemWidget extends StatelessWidget {
           if (article.title?.isEmpty == true || article.link?.isEmpty == true) {
             return;
           }
-          var browserParam = BrowserParam(title: article.title! , url: article.link!, articleId: article.id);
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return BrowserPage(param: browserParam,);
-          }));
+          var browserParam = BrowserParam(
+              title: article.title! ,
+              url: article.link!,
+              articleId: article.id
+          );
+          Get.to(BrowserPage(param: browserParam));
         },
         child: Container(
           padding: EdgeInsets.all(10),

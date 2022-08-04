@@ -9,6 +9,7 @@ class ThirdPartyLibs {
       ThirdPartyLib("flutter_svg", "https://github.com/dnfield/flutter_svg"),
       ThirdPartyLib("share_plus", "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus"),
       ThirdPartyLib("url_launcher", "https://github.com/flutter/plugins/tree/main/packages/url_launcher/url_launcher"),
+      ThirdPartyLib("getx", "https://github.com/jonataslaw/getx"),
     ];
   }
 }

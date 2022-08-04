@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/profile/opensource/model/libs_list.dart';
+import 'package:get/get.dart';
 
 class ThirdPartyLibsPage extends StatelessWidget {
   const ThirdPartyLibsPage({Key? key}) : super(key: key);
@@ -22,10 +23,11 @@ class ThirdPartyLibsPage extends StatelessWidget {
             title: Text(thirdPartyLibs[index].title,),
             subtitle: Text(thirdPartyLibs[index].link),
             onTap: () {
-              final browserParam = BrowserParam(title: thirdPartyLibs[index].title, url: thirdPartyLibs[index].link);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return BrowserPage(param: browserParam);
-              }));
+              final browserParam = BrowserParam(
+                  title: thirdPartyLibs[index].title,
+                  url: thirdPartyLibs[index].link
+              );
+              Get.to(BrowserPage(param: browserParam));
             },
           );
         },

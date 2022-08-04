@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/nav/model/nav.dart';
+import 'package:get/get.dart';
 
 class NavWidget extends StatelessWidget {
 
@@ -41,9 +42,7 @@ class NavWidget extends StatelessWidget {
                         return;
                       }
                       final browserParam = BrowserParam(title: e.title! , url: e.link!);
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return BrowserPage(param: browserParam);
-                      }));
+                      Get.to(BrowserPage(param: browserParam));
                     },
                     child: Chip(
                       label: Text(e.title ?? ""),

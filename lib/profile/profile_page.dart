@@ -10,6 +10,8 @@ import 'package:flutter_wanandroid/profile/integral/integral_ranking_page.dart';
 import 'package:flutter_wanandroid/profile/integral/my_integral_page.dart';
 import 'package:flutter_wanandroid/profile/opensource/third_party_libs_page.dart';
 import 'package:flutter_wanandroid/profile/profile_item.dart';
+import 'package:flutter_wanandroid/settings/settings_page.dart';
+import 'package:get/get.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -32,7 +34,7 @@ class ProfilePage extends StatelessWidget {
               elevation: 1,
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+                  Get.to(LoginPage());
                 },
                 child: Container(
                   color: AppColors.lightBGPrimary,
@@ -69,16 +71,12 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
                     title: "我的积分", onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return MyIntegralPage();
-                      }));
+                      Get.to(MyIntegralPage());
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
                     title: "积分排行", onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return IntegralRankingPage();
-                      }));
+                      Get.to(IntegralRankingPage());
                     },),
                 ],
               )
@@ -108,17 +106,19 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   ProfileItem(icon: SvgIcon(svgIconData: SvgIcons.github,),
                     title: "开源许可", onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ThirdPartyLibsPage()));
+                    Get.to(ThirdPartyLibsPage());
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.info_outline, size: 24,),
                     title: "关于作者", onTap: (){
                       final browserParam = BrowserParam(title: "海树", url: "https://lixiaoyu.life");
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => BrowserPage(param: browserParam)));
+                      Get.to(BrowserPage(param: browserParam));
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
                   ProfileItem(icon: Icon(Icons.settings, size: 24,),
-                    title: "系统设置", onTap: (){},),
+                    title: "系统设置", onTap: (){
+                      Get.to(SettingsPage());
+                    },),
                 ],
               ),
             ),

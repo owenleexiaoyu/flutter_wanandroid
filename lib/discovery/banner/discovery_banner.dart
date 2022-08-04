@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/api/wan_api.dart';
 import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/discovery/banner/banner_bean.dart';
+import 'package:get/get.dart';
 
 
 class BannerWidget extends StatefulWidget {
@@ -41,9 +42,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                     return;
                   }
                   var browserParam = BrowserParam(title: banner.title!, url: banner.url!);
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return BrowserPage(param: browserParam);
-                  }));
+                  Get.to(BrowserPage(param: browserParam));
                 },
                 child: Stack(
                   alignment: Alignment.bottomCenter,

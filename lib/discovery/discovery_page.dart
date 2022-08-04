@@ -3,6 +3,7 @@ import 'package:flutter_wanandroid/account/login_page.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/discovery/banner/discovery_banner.dart';
 import 'package:flutter_wanandroid/search/search_page.dart';
+import 'package:get/get.dart';
 
 class DiscoveryPage extends StatelessWidget {
   const DiscoveryPage({Key? key}) : super(key: key);
@@ -15,9 +16,7 @@ class DiscoveryPage extends StatelessWidget {
         leading: InkWell(
             child: Icon(Icons.add, color: AppColors.lightTextPrimary,),
           onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return LoginPage();
-              }));
+              Get.to(LoginPage());
           },
         ),
         actions: [
@@ -26,9 +25,7 @@ class DiscoveryPage extends StatelessWidget {
             child: InkWell(
                 child: Icon(Icons.search, color: AppColors.lightTextPrimary,),
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return SearchPage();
-                }));
+                Get.to(SearchPage());
               },
             ),
           ),
