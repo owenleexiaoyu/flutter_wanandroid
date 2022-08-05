@@ -1,10 +1,10 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'article_page_bean.g.dart';
+part 'page_bean.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
-class ArticlePage<T>{
+class PageBean<T>{
 
   @JsonKey(name: "curPage")
   int? curPage;
@@ -21,7 +21,7 @@ class ArticlePage<T>{
   @JsonKey(name: "datas")
   List<T>? datas;
 
-  ArticlePage(
+  PageBean(
     this.curPage,
     this.pageCount,
     this.size,
@@ -29,7 +29,7 @@ class ArticlePage<T>{
     this.datas
   );
 
-  factory ArticlePage.fromJson(Map<String, dynamic> json, T Function(Object? source) fromJsonT) => _$ArticlePageFromJson(json, fromJsonT);
+  factory PageBean.fromJson(Map<String, dynamic> json, T Function(Object? source) fromJsonT) => _$PageFromJson(json, fromJsonT);
 
-  Map<String, dynamic> toJson(Object Function(T value) toJsonT) => _$ArticlePageToJson(this, toJsonT);
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) => _$PageToJson(this, toJsonT);
 }

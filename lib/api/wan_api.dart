@@ -5,23 +5,25 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_wanandroid/api/api_exception.dart';
 import 'package:flutter_wanandroid/bean/article.dart';
-import 'package:flutter_wanandroid/bean/article_page_bean.dart';
+import 'package:flutter_wanandroid/bean/name_link_bean.dart';
+import 'package:flutter_wanandroid/bean/page_bean.dart';
 import 'package:flutter_wanandroid/discovery/banner/banner_bean.dart';
 import 'package:flutter_wanandroid/http/dio_client.dart';
 import 'package:flutter_wanandroid/nav/model/nav.dart';
+import 'package:flutter_wanandroid/profile/integral/model/ranking_model.dart';
 
 class WanApi {
 
   /// 获取首页文章列表
-  static Future<ArticlePage<Article>> getHomeArticles(int page) async {
+  static Future<PageBean<Article>> getHomeArticles(int page) async {
     Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com/article/list/$page/json");
     return compute(parseHomeArticles, resp.data ?? "");
   }
 
-  static ArticlePage<Article> parseHomeArticles(String source) {
+  static PageBean<Article> parseHomeArticles(String source) {
     final result = json.decode(source);
     _checkResult(result);
-    return ArticlePage.fromJson(result["data"], (articleJson) => Article().fromJson(articleJson));
+    return PageBean.fromJson(result["data"], (articleJson) => Article().fromJson(articleJson));
   }
 
   static Future<List<BannerBean>> getBanners() async {
@@ -46,6 +48,32 @@ class WanApi {
     _checkResult(result);
     final List<Object?> parsed = result["data"];
     return parsed.map((e) => Nav.fromJson(e)).toList();
+  }
+  
+  /// 获取积分排行
+  static Future<PageBean<RankingModel>> getRanking(int page) async {
+    Response<String> resp = await DioClient().dio
+        .get("https://www.wanandroid.com/coin/rank/$page/json");
+    return compute(_parseRanking, resp.data ?? "");
+  }
+
+  static PageBean<RankingModel> _parseRanking(String source) {
+    final result = json.decode(source);
+    _checkResult(result);
+    return PageBean.fromJson(result["data"], (rankingModelJson) => RankingModel().fromJson(rankingModelJson));
+  }
+  
+  /// 获取常用网站
+  static Future<List<NameLinkBean>> getUsefulWebsites() async {
+    Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com/friend/json");
+    return compute(_parseUsefulWebsites, resp.data ?? "");
+  }
+
+  static List<NameLinkBean> _parseUsefulWebsites(String source) {
+    final result = json.decode(source);
+    _checkResult(result);
+    final List<Object?> parsed = result["data"];
+    return parsed.map((e) => NameLinkBean().fromJson(e)).toList();
   }
 
   static void _checkResult(Map<String, dynamic> result) {

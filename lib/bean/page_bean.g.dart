@@ -1,16 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'article_page_bean.dart';
+part of 'page_bean.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ArticlePage<T> _$ArticlePageFromJson<T>(
+PageBean<T> _$PageFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
 ) =>
-    ArticlePage<T>(
+    PageBean<T>(
       json['curPage'] as int?,
       json['pageCount'] as int?,
       json['size'] as int?,
@@ -18,8 +18,8 @@ ArticlePage<T> _$ArticlePageFromJson<T>(
       (json['datas'] as List<dynamic>?)?.map(fromJsonT).toList(),
     );
 
-Map<String, dynamic> _$ArticlePageToJson<T>(
-  ArticlePage<T> instance,
+Map<String, dynamic> _$PageToJson<T>(
+  PageBean<T> instance,
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
