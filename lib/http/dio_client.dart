@@ -1,3 +1,4 @@
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 
 class DioClient {
@@ -21,6 +22,12 @@ class DioClient {
       headers: {}
     );
     dio = Dio(options);
+    // (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
+    //   client.findProxy = (uri) {
+    //     // 代理链接可能会变
+    //     return "PROXY 192.168.31.80:8888";
+    //   };
+    // };
   }
 
 

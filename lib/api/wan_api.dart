@@ -18,10 +18,11 @@ class WanApi {
   /// 获取首页文章列表
   static Future<PageBean<Article>> getHomeArticles(int page) async {
     Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com/article/list/$page/json");
-    return compute(parseHomeArticles, resp.data ?? "");
+    return compute(_parseArticleListInPage, resp.data ?? "");
   }
 
-  static PageBean<Article> parseHomeArticles(String source) {
+  /// 解析返回类型为 PageBean<Article> 的请求结果
+  static PageBean<Article> _parseArticleListInPage(String source) {
     final result = json.decode(source);
     _checkResult(result);
     return PageBean.fromJson(result["data"], (articleJson) => Article().fromJson(articleJson));
@@ -29,10 +30,10 @@ class WanApi {
 
   static Future<List<BannerBean>> getBanners() async {
     Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com/banner/json");
-    return compute(parseBanners, resp.data ?? "");
+    return compute(_parseBanners, resp.data ?? "");
   }
 
-  static List<BannerBean> parseBanners(String source) {
+  static List<BannerBean> _parseBanners(String source) {
     final result = json.decode(source);
     _checkResult(result);
     final parsed = result["data"].cast<Map<String, dynamic>>();
@@ -67,10 +68,11 @@ class WanApi {
   /// 获取常用网站
   static Future<List<NameLinkBean>> getUsefulWebsites() async {
     Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com/friend/json");
-    return compute(_parseUsefulWebsites, resp.data ?? "");
+    return compute(_parseNameLinkList, resp.data ?? "");
   }
 
-  static List<NameLinkBean> _parseUsefulWebsites(String source) {
+  /// 解析范型为 List<NameLinkBean> 的请求结果
+  static List<NameLinkBean> _parseNameLinkList(String source) {
     final result = json.decode(source);
     _checkResult(result);
     final List<Object?> parsed = result["data"];
@@ -98,13 +100,20 @@ class WanApi {
   ) async {
     Response<String> resp = await DioClient().dio
         .get("https://www.wanandroid.com/article/list/$page/json?cid=$cid");
-    return compute(_parseKnowledgeArticles, resp.data ?? "");
+    return compute(_parseArticleListInPage, resp.data ?? "");
   }
-
-  static PageBean<Article> _parseKnowledgeArticles(String source) {
-    final result = json.decode(source);
-    _checkResult(result);
-    return PageBean.fromJson(result["data"], (articleJson) => Article().fromJson(articleJson));
+  
+  /// 获取热门搜索词
+  static Future<List<NameLinkBean>> getSearchHotKeywords() async {
+    Response<String> resp = await DioClient().dio.get("https://www.wanandroid.com//hotkey/json");
+    return compute(_parseNameLinkList, resp.data ?? "");
+  }
+  
+  /// 搜索
+  static Future<PageBean<Article>> searchByKeyword(String keyword, int page) async {
+    final formData = FormData.fromMap({"k": keyword});
+    Response<String> resp = await DioClient().dio.post("https://www.wanandroid.com/article/query/$page/json", data: formData);
+    return _parseArticleListInPage(resp.data ?? "");
   }
 
   static void _checkResult(Map<String, dynamic> result) {
