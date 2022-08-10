@@ -5,6 +5,7 @@ import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:flutter_wanandroid/search/search_result_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchPage extends StatefulWidget {
 
@@ -16,10 +17,14 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
 
+  static const _SEARCH_HISTORY = "search_history";
   /// 热门搜索词列表
   List<NameLinkBean> hotKeywordList = [];
   /// 搜索历史列表
-  List<String> searchHistoryList = ["Flutter"];
+  List<String> searchHistoryList = [];
+
+  TextEditingController? _textEditingController;
+  SharedPreferences? _sp;
 
   @override
   void initState() {
@@ -33,6 +38,23 @@ class _SearchPageState extends State<SearchPage> {
     }).whenComplete(() {
 
     });
+
+    _textEditingController = new TextEditingController();
+
+    initSearchHistory();
+  }
+
+  void initSearchHistory() async {
+    _sp = await SharedPreferences.getInstance();
+    setState(() {
+      searchHistoryList = _sp?.getStringList(_SEARCH_HISTORY) ?? [];
+    });
+  }
+
+  @override
+  void dispose() {
+    _textEditingController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,6 +71,7 @@ class _SearchPageState extends State<SearchPage> {
               color: AppColors.lightBGSecondary
             ),
             child: TextField(
+              controller: _textEditingController,
               decoration: InputDecoration(
                 hintText: "输入关键词进行搜索",
                 border: InputBorder.none,
@@ -60,7 +83,15 @@ class _SearchPageState extends State<SearchPage> {
           SizedBox(
             width: 60,
             child: IconButton(
-              onPressed: (){},
+              onPressed: () {
+                final searchText = _textEditingController?.text ?? "";
+                if (searchText.isEmpty) {
+                  Fluttertoast.showToast(msg: "请先输入搜索关键词");
+                  return;
+                }
+                _textEditingController?.clear();
+                navigatorToSearchResultPage(searchText);
+              },
                 icon: Icon(Icons.search)),
           )
         ],
@@ -141,6 +172,11 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void navigatorToSearchResultPage(String keyword) {
+    if (!searchHistoryList.contains(keyword)) {
+      searchHistoryList.add(keyword);
+      _sp?.setStringList(_SEARCH_HISTORY, searchHistoryList);
+      setState(() {});
+    }
     Get.to(SearchResultPage(keyword));
   }
 }

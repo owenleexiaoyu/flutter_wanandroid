@@ -10,6 +10,8 @@ class ThirdPartyLibs {
       ThirdPartyLib("share_plus", "https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus"),
       ThirdPartyLib("url_launcher", "https://github.com/flutter/plugins/tree/main/packages/url_launcher/url_launcher"),
       ThirdPartyLib("getx", "https://github.com/jonataslaw/getx"),
+      ThirdPartyLib("shared_preferences", "https://github.com/flutter/plugins/tree/main/packages/shared_preferences"),
+      ThirdPartyLib("simple_html_css", "https://github.com/ali-thowfeek/simple_html_css_flutter"),
     ];
   }
 }

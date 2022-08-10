@@ -3,7 +3,9 @@ import 'package:flutter_wanandroid/bean/article.dart';
 import 'package:flutter_wanandroid/brawer/browser_page.dart';
 import 'package:flutter_wanandroid/brawer/browser_param.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
+import 'package:flutter_wanandroid/utils/article_utils.dart';
 import 'package:get/get.dart';
+import 'package:simple_html_css/simple_html_css.dart';
 
 class ArticleItemWidget extends StatelessWidget {
 
@@ -16,12 +18,7 @@ class ArticleItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String authorText = "";
-    if (article.author?.isNotEmpty ?? false) {
-      authorText = article.author!;
-    } else if (article.shareUser?.isNotEmpty ?? false) {
-      authorText = article.shareUser!;
-    }
+    String authorText = ArticleUtils.getAuthor(article);
     return Material(
       elevation: 1,
       child: InkWell(
@@ -51,7 +48,7 @@ class ArticleItemWidget extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 5,),
-              Text(article.title ?? "", style: Theme.of(context).textTheme.bodyText1),
+              RichText(text: HTML.toTextSpan(context, article.title ?? "")),
               SizedBox(height: 5,),
               (article.desc?.isNotEmpty ?? false) ? Text(article.desc!, style: Theme.of(context).textTheme.bodyText2,) : SizedBox.shrink(),
               Text(article.niceDate ?? "", style: Theme.of(context).textTheme.bodyText2!.copyWith(
