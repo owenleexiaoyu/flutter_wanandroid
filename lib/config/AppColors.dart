@@ -15,4 +15,6 @@ class AppColors {
 
   static Color lightDivider = Colors.grey.shade300;
 
+  static Color lightIconPrimary = Colors.black;
+
 }

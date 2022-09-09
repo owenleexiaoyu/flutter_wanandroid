@@ -43,7 +43,7 @@ class WanAndroidApp extends StatelessWidget {
             fontSize: 15
           ),
         ),
-        iconTheme: IconThemeData(color: AppColors.lightTextPrimary)
+        iconTheme: IconThemeData(color: AppColors.lightIconPrimary)
       ),
       home: MainPage(),
     );

@@ -69,12 +69,21 @@ class ProfilePage extends StatelessWidget {
               elevation: 1,
               child: Column(
                 children: [
-                  ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
+                  ProfileItem(icon: Icon(
+                    Icons.check_box_outlined,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "我的积分", onTap: (){
                       Get.to(MyIntegralPage());
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
-                  ProfileItem(icon: Icon(Icons.check_box_outlined, size: 24,),
+                  ProfileItem(icon:
+                  Icon(
+                    Icons.check_box_outlined,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "积分排行", onTap: (){
                       Get.to(IntegralRankingPage());
                     },),
@@ -86,13 +95,27 @@ class ProfilePage extends StatelessWidget {
               elevation: 1,
               child: Column(
                 children: [
-                  ProfileItem(icon: Icon(Icons.add_circle_outline, size: 24,),
+                  ProfileItem(icon: Icon(
+                    Icons.add_circle_outline,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "我的分享", onTap: (){},),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
-                  ProfileItem(icon: Icon(Icons.star_border, size: 24,),
+                  ProfileItem(icon:
+                  Icon(
+                    Icons.star_border,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "我的收藏", onTap: (){},),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
-                  ProfileItem(icon: Icon(Icons.history, size: 24,),
+                  ProfileItem(icon:
+                  Icon(
+                    Icons.history,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "浏览历史", onTap: (){},),
                 ],
               ),
@@ -109,13 +132,21 @@ class ProfilePage extends StatelessWidget {
                     Get.to(ThirdPartyLibsPage());
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
-                  ProfileItem(icon: Icon(Icons.info_outline, size: 24,),
+                  ProfileItem(icon: Icon(
+                    Icons.info_outline,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "关于作者", onTap: (){
                       final browserParam = BrowserParam(title: "海树", url: "https://lixiaoyu.life");
                       Get.to(BrowserPage(param: browserParam));
                     },),
                   Divider(height: 0.0, color: AppColors.lightDivider,),
-                  ProfileItem(icon: Icon(Icons.settings, size: 24,),
+                  ProfileItem(icon: Icon(
+                    Icons.settings,
+                    size: 24,
+                    color: AppColors.lightIconPrimary,
+                  ),
                     title: "系统设置", onTap: (){
                       Get.to(SettingsPage());
                     },),
