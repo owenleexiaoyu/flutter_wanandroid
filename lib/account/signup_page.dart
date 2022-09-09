@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wanandroid/account/signup_page.dart';
+import 'package:flutter_wanandroid/account/login_page.dart';
 import 'package:flutter_wanandroid/config/AppColors.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("登录"),
+        title: Text("注册"),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -36,6 +36,12 @@ class LoginPage extends StatelessWidget {
                     hintText: "密码"
                 ),
               ),
+              SizedBox(height: 10,),
+              TextField(
+                decoration: InputDecoration(
+                    hintText: "确认密码"
+                ),
+              ),
             ],
           )),
             SizedBox(height: 20,),
@@ -45,7 +51,7 @@ class LoginPage extends StatelessWidget {
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12),),
                   ),
-                    onPressed: () {}, child: Text("登录"))),
+                    onPressed: () {}, child: Text("注册"))),
             SizedBox(height: 5,),
             Container(
                 width: double.infinity,
@@ -54,8 +60,8 @@ class LoginPage extends StatelessWidget {
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12),),
                     ),
                     onPressed: () {
-                      Get.to(SignUpPage());
-                    }, child: Text("去注册"))),
+                      Get.to(LoginPage());
+                    }, child: Text("去登录"))),
         ]
         ),
       ),
